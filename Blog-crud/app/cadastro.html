@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="capa"></div>
+
+        <div class="form-body">
+            <h1>Cadastre<span>-se</span></h1>
+            <form method="post" action="cadastro.php">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome" placeholder="Digite seu nome">
+
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" placeholder="Digite seu e-mail">
+
+                <div class="input-group">
+                    <div>
+                        <label for="nome">Telefone</label>
+                        <input type="tel" name="telefone" id="telefone" placeholder="Digite seu telefone">
+                    </div>
+
+                    <div>
+                        <label for="idade">Idade</label>
+                        <input type="idade" name="idade" id="idade" placeholder="Digite sua idade">
+                    </div>
+                </div>
+
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
+
+                <div class="register-container">
+                    <button>Cadastre-se</button>
+                    <a href="login.html">Você já possui conta?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
