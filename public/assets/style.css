@@ -1,0 +1,501 @@
+/* ========== Variáveis (mesmo tema do Blog) ========== */
+:root {
+    --cor-destaque: #9b6bff;
+    --cor-destaque-forte: #7c3aed;
+    --cor-fundo: #0b0d17;
+    --cor-superficie: rgba(21, 24, 39, 0.85);
+    --cor-campo: #0f1220;
+    --cor-borda: #262a40;
+    --cor-texto: #e6e7f0;
+    --cor-texto-suave: #a3a6bd;
+    --cor-erro: #f87171;
+    --cor-sucesso: #4ade80;
+
+    --raio: 14px;
+    --largura-max: 900px;
+    --fonte: "Raleway", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* ========== Base ========== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--fonte);
+    line-height: 1.6;
+    color: var(--cor-texto);
+    background:
+        radial-gradient(ellipse at 70% -10%, rgba(124, 58, 237, 0.35), transparent 55%),
+        radial-gradient(ellipse at 0% 0%, rgba(59, 130, 246, 0.18), transparent 50%),
+        var(--cor-fundo);
+    background-attachment: fixed;
+}
+
+a {
+    color: var(--cor-destaque);
+}
+
+h1,
+h2 {
+    line-height: 1.2;
+    margin: 0 0 0.4em;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--largura-max);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estrelas ficam atrás de tudo */
+.estrelas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body > header,
+body > main,
+body > footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* ========== Cabeçalho ========== */
+.barra {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--cor-texto);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--cor-destaque);
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 18px;
+}
+
+.menu > a:not(.botao),
+.link {
+    color: var(--cor-texto-suave);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.menu > a:not(.botao):hover,
+.link:hover {
+    color: var(--cor-texto);
+}
+
+.form-sair {
+    margin: 0;
+}
+
+/* ========== Conteúdo ========== */
+.conteudo {
+    flex: 1;
+    display: grid;
+    gap: 24px;
+    align-content: start;
+    padding-top: 16px;
+    padding-bottom: 60px;
+}
+
+.banner {
+    text-align: center;
+    padding: 40px 0 16px;
+}
+
+.banner h1 {
+    font-size: clamp(2.2rem, 7vw, 3.6rem);
+    font-weight: 800;
+}
+
+.banner p {
+    margin: 0;
+    color: var(--cor-texto-suave);
+    font-size: 1.15rem;
+}
+
+.caixa {
+    padding: 32px;
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    backdrop-filter: blur(8px);
+}
+
+.centro {
+    text-align: center;
+}
+
+.subtitulo,
+.meta,
+.dica,
+.vazio-texto {
+    color: var(--cor-texto-suave);
+}
+
+.subtitulo {
+    margin: 0 0 24px;
+}
+
+.meta {
+    margin: 0 0 8px;
+    font-size: 0.85rem;
+}
+
+.voltar {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--cor-texto-suave);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.voltar:hover {
+    color: var(--cor-texto);
+}
+
+/* ========== Lista de posts ========== */
+.lista-posts {
+    display: grid;
+    gap: 16px;
+}
+
+.card-post a {
+    display: block;
+    padding: 24px 28px;
+    background: var(--cor-superficie);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    color: inherit;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.card-post a:hover,
+.card-post a:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--cor-destaque-forte);
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.2);
+}
+
+.card-post h2 {
+    font-size: 1.4rem;
+}
+
+.card-post p:not(.meta) {
+    margin: 0;
+    color: var(--cor-texto-suave);
+}
+
+.ler-mais {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--cor-destaque);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+/* ========== Post ========== */
+.post h1 {
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+}
+
+.post-texto {
+    margin: 28px 0;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.post-texto p {
+    margin: 0 0 1.1em;
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.acoes form {
+    margin: 0;
+}
+
+/* ========== Painel ========== */
+.painel-topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.painel-topo .subtitulo {
+    margin: 0;
+}
+
+.lista-painel {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.lista-painel li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    background: var(--cor-campo);
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+}
+
+.lista-painel li > div:first-child {
+    min-width: 0;
+    flex: 1 1 260px;
+}
+
+.painel-titulo {
+    color: var(--cor-texto);
+    font-weight: 700;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+.painel-titulo:hover {
+    color: var(--cor-destaque);
+}
+
+.lista-painel .meta {
+    margin: 2px 0 0;
+}
+
+/* ========== Formulários ========== */
+.formulario-caixa {
+    width: 100%;
+    max-width: 460px;
+    margin: 24px auto 0;
+}
+
+form {
+    display: grid;
+    gap: 6px;
+}
+
+.campo {
+    display: grid;
+    gap: 6px;
+}
+
+.campo label {
+    font-weight: 600;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--cor-campo);
+    border: 1.5px solid var(--cor-borda);
+    border-radius: 10px;
+    color: var(--cor-texto);
+    font: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.campo textarea {
+    min-height: 260px;
+    resize: vertical;
+    line-height: 1.7;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+    box-shadow: 0 0 0 3px rgba(155, 107, 255, 0.25);
+}
+
+.campo.invalido input,
+.campo.invalido textarea {
+    border-color: var(--cor-erro);
+}
+
+.erro {
+    min-height: 1.3em;
+    font-size: 0.85rem;
+    color: var(--cor-erro);
+}
+
+.dica {
+    font-size: 0.85rem;
+}
+
+.troca {
+    margin: 20px 0 0;
+    text-align: center;
+    color: var(--cor-texto-suave);
+}
+
+/* ========== Botões ========== */
+.botao {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--cor-destaque-forte);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.botao:hover {
+    background: var(--cor-destaque);
+}
+
+.botao:active {
+    transform: scale(0.98);
+}
+
+.botao-pequeno {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+}
+
+.botao-largo {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.botao-secundario {
+    background: none;
+    color: var(--cor-texto);
+    border: 1.5px solid var(--cor-borda);
+}
+
+.botao-secundario:hover {
+    background: var(--cor-campo);
+    border-color: var(--cor-texto-suave);
+}
+
+.botao-perigo {
+    background: none;
+    color: var(--cor-erro);
+    border: 1.5px solid color-mix(in srgb, var(--cor-erro) 50%, transparent);
+}
+
+.botao-perigo:hover {
+    background: color-mix(in srgb, var(--cor-erro) 15%, transparent);
+}
+
+/* ========== Avisos ========== */
+.aviso {
+    margin: 0;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.aviso-sucesso {
+    background: color-mix(in srgb, var(--cor-sucesso) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cor-sucesso) 40%, transparent);
+    color: var(--cor-sucesso);
+}
+
+.aviso-erro {
+    background: color-mix(in srgb, var(--cor-erro) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cor-erro) 40%, transparent);
+    color: var(--cor-erro);
+}
+
+.formulario-caixa .aviso {
+    margin-bottom: 16px;
+}
+
+/* ========== Rodapé ========== */
+.rodape {
+    border-top: 1px solid var(--cor-borda);
+    padding: 24px 0;
+    color: var(--cor-texto-suave);
+    font-size: 0.9rem;
+}
+
+.rodape p {
+    margin: 0;
+    text-align: center;
+}
+
+/* ========== Acessibilidade ========== */
+:focus-visible {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ========== Responsivo ========== */
+@media (max-width: 600px) {
+    .caixa {
+        padding: 22px;
+    }
+
+    .card-post a {
+        padding: 20px;
+    }
+
+    .banner {
+        padding-top: 16px;
+    }
+}

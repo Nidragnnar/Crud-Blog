@@ -1,0 +1,11 @@
+services:
+  blog:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      # O arquivo do banco fica neste volume e não se perde ao recriar o container
+      - dados:/var/www/html/dados
+
+volumes:
+  dados:
